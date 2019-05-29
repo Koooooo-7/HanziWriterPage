@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HanziWriter</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@1.3/dist/hanzi-writer.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  Bootstrap  CSS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" 
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -ms-flex-align: center;
+            -ms-flex-pack: center;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .word-input {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .word-input .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .word-input .form-control:focus {
+            z-index: 2;
+        }
+
+
+        .word-show{
+            height: 100px;
+            width: 100px;
+            margin: auto;
+            padding: auto;
+        }
+    </style>
+</head>
+
+<body class="text-center">
+<div class="word-input">
+    <img class="mb-4" src="img/word-logo.gif" alt="" width="80" height="80">
+    <h1 class="h3 mb-3 font-weight-normal"></h1>
+    <input type="text" id="word" class="form-control" name="word" placeholder="Input word">
+    <div class="word-show">
+        <div id="character-target-div"></div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" id="animate-button">Go</button>
+	<br>
+    <a href="https://chanind.github.io/hanzi-writer/" target="_blank">Powered by Hanzi-Writer</a>
+    <p class="mt-5 mb-3 text-muted">&copy; made in China</p>
+</div>
+
+
+<script>
+
+    document.getElementById('animate-button').addEventListener('click', function() {
+        document.getElementById("character-target-div").innerHTML = "";
+        var word = document.getElementsByName("word")[0].value;
+        var han = /^[\u4e00-\u9fa5]+$/;
+        if (word == '') {
+            return false;
+        }
+        if (word.length > 1) {
+            return false;
+        }
+        if (!han.test(word)) {
+            return false;
+        };
+        var writer = HanziWriter.create('character-target-div', word, {
+            width: 100,
+            height: 100,
+            padding: 5,
+            showOutline: true
+        });
+        writer.animateCharacter();
+    });
+</script>
+</body>
+</html>
