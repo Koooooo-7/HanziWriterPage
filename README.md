@@ -10,4 +10,4 @@ So I tried to make a Phone-Suitable web page:dog:
 
 只是为了分享给更多的人。:sunflower:
 
-待我有时间，试试做成一个小程序:electric_plug:。
+待我有时间看看小程序开发，试试做成一个小程序:electric_plug:。
